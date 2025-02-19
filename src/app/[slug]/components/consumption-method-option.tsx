@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 type props = {
+  slug: string;
   url: string;
   alt: string;
   text: string;
@@ -24,7 +25,7 @@ const ConsuptionMethodOption = (props: props) => {
             className="object-contain"
           ></Image>
         </div>
-        <Link  href={`/menu?consumptionMethod=${props.option}`}>
+        <Link  href={`${props.slug}/menu?consumptionMethod=${props.option}`}>
         <Button variant="secondary" className="rounded-full">
           {props.text}
         </Button>

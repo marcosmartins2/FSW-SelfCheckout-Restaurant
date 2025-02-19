@@ -42,12 +42,14 @@ const RestaurantPage = async ({ params }: RestaurantPageProps) => {
             text="Para comer aqui"
             alt="Para comer aqui"
             option="DINE_IN"
+            slug={slug}
           />
           <ComsuptionMethodOption
             url="/Levar.png"
             text="Para levar"
             alt="Para levar"
             option="TAKEAWAY"
+            slug={slug}
           />
         </div>
       </div>
