@@ -1,11 +1,9 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { getRestaurantBySlug } from "@/data/get-restaurant-by-slug";
 
-import ComsuptionMethodOption from "./components/comsuption-method-option";
+import ComsuptionMethodOption from "./components/consumption-method-option";
 
 interface RestaurantPageProps {
   params: Promise<{ slug: string }>;
@@ -43,12 +41,14 @@ const RestaurantPage = async ({ params }: RestaurantPageProps) => {
             url="/Comer_aqui.png"
             text="Para comer aqui"
             alt="Para comer aqui"
+            option="DINE_IN"
           />
           <ComsuptionMethodOption
-            url="/Levar.png" 
+            url="/Levar.png"
             text="Para levar"
             alt="Para levar"
-            />
+            option="TAKEAWAY"
+          />
         </div>
       </div>
     </div>
