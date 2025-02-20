@@ -1,13 +1,32 @@
+import { notFound } from "next/navigation";
 
-type props =  {
-    params: Promise<{ slug: string }>;
-}
+import { getRestaurantBySlug } from "@/data/get-restaurant-by-slug";
 
-const RestaurantMenuPage = async ({params}:props) => {
+import RestaurantHeader from "./components/header";
 
-    const {slug} = await params;
+type props = {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ consumptionMethod: string }>;
+};
 
-    return ( <h1>{slug}</h1> );
-}
- 
+const isConsumptionMethodValid = (consumptionMethod: string) => {
+  return ["DINE_IN", "TAKEAWAY"].includes(consumptionMethod.toUpperCase());
+};
+
+const RestaurantMenuPage = async ({ params, searchParams }: props) => {
+  const { slug } = await params;
+  const { consumptionMethod } = await searchParams;
+  const restaurant = await getRestaurantBySlug(slug);
+
+  if (!isConsumptionMethodValid(consumptionMethod) || !restaurant) {
+    return notFound();
+  }
+
+  return (
+    <div>
+      <RestaurantHeader restaurant={restaurant} />
+    </div>
+  );
+};
+
 export default RestaurantMenuPage;

@@ -25,11 +25,13 @@ const ConsuptionMethodOption = (props: props) => {
             className="object-contain"
           ></Image>
         </div>
+        
+        <Button variant="secondary" className="rounded-full" asChild>
         <Link  href={`${props.slug}/menu?consumptionMethod=${props.option}`}>
-        <Button variant="secondary" className="rounded-full">
           {props.text}
+          </Link>
         </Button>
-        </Link>
+        
       </CardContent>
     </Card>
   );
