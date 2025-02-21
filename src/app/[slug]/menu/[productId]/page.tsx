@@ -12,10 +12,13 @@ interface ProductPageProps {
 }
 
 const ProductPage = async ({params}:ProductPageProps) => {
-    const {productId}= await params;
-    const product = await db.product.findUnique({where: {id: productId},include:{restaurant:{select:{avatarImageUrl:true,name:true}}}});
+    const {slug,productId}= await params;
+    const product = await db.product.findUnique({where: {id: productId},include:{restaurant:{select:{avatarImageUrl:true,name:true,slug:true}}}});
     
     if (!product){
+        return notFound();
+    }
+    if (product.restaurant.slug.toUpperCase() !== slug.toUpperCase()){
         return notFound();
     }
     return ( <>

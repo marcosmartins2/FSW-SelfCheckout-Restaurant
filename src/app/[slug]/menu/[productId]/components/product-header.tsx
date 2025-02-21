@@ -19,7 +19,7 @@ const ProductHeader = ({product}:ProductHeaderProps) => {
     }
     return ( 
     
-    <div className="relative w-full h-[300px]">
+    <div className="relative w-full min-h-[300px]">
         <Image src={product.imageUrl} alt={product.name} fill className="object-contain" />
         <div className="relative h-[250px] w-full">
           <Button
