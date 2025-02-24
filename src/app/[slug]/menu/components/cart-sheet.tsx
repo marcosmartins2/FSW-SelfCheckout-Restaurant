@@ -16,11 +16,14 @@ const CartSheet = () => {
                 <SheetHeader>
                     <SheetTitle className="text-left">Sacola</SheetTitle>
                 </SheetHeader>
-                {products.map((product=>(
+               <div className="py-5">
+
+               {products.map((product=>(
                     <CartProductItem key={product.id} product={product}/>
                 
                 )
                 ))}
+               </div>
             </SheetContent>
         </Sheet>
 
